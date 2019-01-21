@@ -1,0 +1,141 @@
+
+				<div class="container">
+
+					<p>Yeah I know, I can do it with <code>min-height</code>, or perhaps a <code>table</code>-layout… It's what you think, but you are not totally right if you do so. But before talking about right and wrong, let’s define our needs.</p>
+
+					<h2>Defining the columns behavior</h2>
+
+					<p>I worked with several designers. You know them, they want to create perfect blocks with right divisions, well measured columns, buttons to the bottom, gorgeous images or icons to illustrate a marketing wording…<br>
+					Let's define our needs as following:</p>
+
+					<ul>
+						<li>Columns should have same visual height by taking the biggest one,</li>
+						<li>Columns could have same width, but can also be flexible,</li>
+						<li>I want an image at the top, then a title, then a little text and a button/link</li>
+						<li>The link have to be at the bottom-end of the column, no matter the text size above,</li>
+						<li>Use a minimal markup and CSS, only CSS, no JS</li>
+					</ul>
+
+					<h2>Let's code this</h2>
+
+					<p>First at all, you need to build a basic HTML markup. I propose to you this one, but feel free to adapt or improve regarding your real needs.</p>
+
+					<h3>HTML</h3>
+
+<pre class="code"><code class="html">&lt;section&gt;
+	&lt;h1&gt;Same Column Height&lt;/h1&gt;
+	&lt;div class="flex"&gt;
+		&lt;div class="col"&gt;
+				
+			&lt;a href="#"&gt;
+				&lt;img src="image.jpg" width="" height="" alt="Some sample words"&gt;
+			&lt;/a&gt;
+
+			&lt;h2&gt;A little title&lt;/h2&gt;
+			&lt;p&gt;Lorem ipsum dolor sit […]&lt;/p&gt;
+				
+			&lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+
+		&lt;/div&gt;
+
+		&lt;div class="col"&gt;
+				
+			&lt;a href="#"&gt;
+				&lt;img src="image.jpg" width="" height="" alt="Some sample words"&gt;
+			&lt;/a&gt;
+
+			&lt;h2&gt;A little title&lt;/h2&gt;
+			&lt;p&gt;Lorem ipsum dolor sit amet […]&lt;/p&gt;
+				
+			&lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+
+		&lt;/div&gt;
+
+		&lt;div class="col"&gt;
+				
+			&lt;a href="#"&gt;
+				&lt;img src="image.jpg" width="" height="" alt="Some sample words"&gt;
+			&lt;/a&gt;
+
+			&lt;h2&gt;A little title&lt;/h2&gt;
+			&lt;p&gt;Lorem ipsum dolor sit amet, consectetur […]&lt;/p&gt;
+				
+			&lt;a class="btn" href="#"&gt;Read more&lt;/a&gt;
+
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+					<p>Now some styles to make the magic works.</p>
+
+					<h3>CSS</h3>
+
+					<p>To be clear: today, your website has to be responsive. That's why the CSS code I'll propose you is <em>mobile first responsive</em>.</p>
+
+<pre class="code"><code class="css">/**
+ * Make images responsive
+ */
+.flex .col img {
+	width: 100%;
+	height: auto;
+}
+
+/**
+ * Make .flex children same
+ * height using display flex.
+ * Justify property prepares
+ * cols for being centered.
+ */
+.flex {
+	display: flex;
+	justify-content: center;
+	width: 960px;
+	max-width: 100%;
+	margin: auto;
+}
+
+/**
+ * Make cols flexible to
+ * auto push button at the
+ * col bottom.
+ */
+.flex .col {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 300px;
+	/* 
+	In the order, equal to
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 300px;
+	*/
+	margin: 1em;
+}
+
+/**
+ * Margin-top auto pushes
+ * button to bottom.
+ * Align self makes button
+ * stuck to the left.
+ */
+.flex .col .btn {
+	align-self: flex-start;
+	margin-top: auto;
+}
+
+/**
+ * Under 900px wrap cols
+ */
+@media (max-width: 900px) {
+	.flex {
+		flex-wrap: wrap;
+	}
+}</code></pre>
+					<p>In that precise case, I allowed images to be very big, larger than their physical width in intermediate screen sizes. (iPad mini in portrait, or something…)<br>
+					If you need to keep a real good feeling about images, grab a solution among <code>size</code> and <code>srcset</code> attributes, or simply decide to replace <code>flex: 1 1 300px;</code> by <code>flex: 0 1 300px;</code> that allows cols being smaller but not bigger than 300 pixels wide.</p>
+
+					<p>I hope these comments will help you understand this very short code.Yeah, as you can see, it's pretty easy to do it work.</p>
+
+					<p>Sure, there are many other ways to make the same thing differently. Feel free to adapt it and make your own code.</p>
+
+				</div><!-- .container -->

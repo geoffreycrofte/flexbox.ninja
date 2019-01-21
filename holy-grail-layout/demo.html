@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Holy Grail Layout solved by flexbox - Flexbox.ninja</title>
+
+		<meta name="viewport" content="initial-scale=1.0; width=device-width">
+
+		<style type="text/css">
+			* {
+				box-sizing: border-box;
+			}
+			html, body {
+				margin: 0;
+				padding: 0;
+				font-family: sans-serif;
+				font-size: 1.1em;
+				text-align: center;
+				color: #FFF;
+			}
+			.holy-grail header,
+			.holy-grail footer,
+			.hg-sidebar,
+			.holy-grail-content {
+				padding: 20px;
+			}
+			.holy-grail header,
+			.holy-grail footer {
+				background: #FED0D1;
+			}
+			.hg-sidebar {
+				background: #F34A4E;
+			}
+			.holy-grail-content {
+				color: #777;
+			}
+
+			/**
+			 * Flex things:
+			 * — Mobile first
+			 * — Responsive
+			 */
+			.holy-grail {
+				min-height: 100vh;
+			}
+			.holy-grail,
+			.holy-grail-body {
+				display: flex;
+				flex: 1 1 auto;
+				flex-direction: column;
+			}
+			.holy-grail-content {
+				flex: 1 1 auto;
+			}
+			@media (min-width: 768px) {
+				.holy-grail-sidebar-1 {
+					order: -1;
+				}
+				.holy-grail-body {
+					flex-direction: row;
+				}
+				.hg-sidebar {
+					flex: 0 0 260px;
+				}
+			}
+		</style>
+
+	</head>	
+	<body class="holy-grail">
+
+		<header>
+			<p>Header</p>
+		</header>
+
+		<div class="holy-grail-body">
+
+			<section class="holy-grail-content">
+				<p>Main content of the page</p>
+			</section>
+
+			<div class="holy-grail-sidebar-1 hg-sidebar">
+				<p>Sidebar 1</p>
+			</div>
+
+			<div class="holy-grail-sidebar-2 hg-sidebar">
+				<p>Sidebar 2</p>
+			</div>
+
+		</div>
+
+		<footer>
+			<p>Footer</p>
+		</footer>
+	</body>
+</html>

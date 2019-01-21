@@ -1,0 +1,28 @@
+{
+	"demos" : {
+		"holy-grail-layout" : {
+			"title"	: "Holy Grail Layout",
+			"desc"	: "One header, one content, one footer and two cols. Get rid of the hard thing with Flexbox!",
+			"color" : "",
+			"dl" : true,
+			"direct" : true,
+			"dateCreated" : "10 august 2016"
+		},
+		"same-height-columns" : {
+			"title"	: "Same Columns Height",
+			"desc"	: "Your designer made an awesome work with Lorem Ipsum, but in real life texts change. Let's keep a good harmony with Flexbox!",
+			"color" : "alt",
+			"dl" : true,
+			"direct" : true,
+			"dateCreated" : "12 september 2016"
+		},
+		"website-header" : {
+			"title"	: "Website Header",
+			"desc"	: "A logo to the left, a navigation to the right, everything centered in small screen, no matters the number of nav items. Easy with Flexbox!",
+			"color" : "",
+			"dl" : true,
+			"direct" : true,
+			"dateCreated" : "16 september 2016"
+		}
+	}
+}

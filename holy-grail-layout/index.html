@@ -1,0 +1,127 @@
+
+				<div class="container">
+
+					<p>You certainly already know this layout. The Holy Grail layout is defined as:</p>
+
+					<blockquote>
+						<p>The <strong>Holy Grail</strong> refers to a web page layout which has multiple, equal height columns that are defined with style sheets. It is commonly desired and implemented, although the ways in which it can be implemented with current technologies all have drawbacks. Because of this, finding an optimal implementation has been likened to <strong>searching for the elusive Holy Grail</strong>.</p>
+						<p class="source"><a href="https://en.wikipedia.org/wiki/Holy_Grail_%28web_design%29">Wikipedia</a></p>
+					</blockquote>
+
+					<h2>Defining the Holy Grail</h2>
+
+					<p>From the Wikipedia summary, and lot of other researches to find the good way to implement this layout, we are looking for something like that:</p>
+
+					<ul>
+						<li>Sidebars and main content should have the same height, regardless of which element is the tallest,</li>
+						<li>Sidebars should have fixed width and main content fluid width,</li>
+						<li>The center column (main content) should appear first in the HTML source,</li>
+						<li>If the content is sparse, the footer should stay to the bottom of the page,</li>
+						<li>Use a minimal markup and CSS.</li>
+					</ul>
+
+					<h2>Let's code this</h2>
+
+					<p>First at all, you need to build a basic HTML markup. I propose to you this one, but feel free to adapt or improve regarding your real needs.</p>
+
+					<h3>HTML</h3>
+
+<pre class="code"><code class="html">&lt;body class="holy-grail"&gt;
+	&lt;header&gt;
+		&lt;!-- header content -->
+	&lt;/header&gt;
+
+	&lt;div class="holy-grail-body"&gt;
+
+		&lt;section class="holy-grail-content"&gt;
+			&lt;!-- Main page content -->
+		&lt;/section&gt;
+
+		&lt;div class="holy-grail-sidebar-1 hg-sidebar"&gt;
+			&lt;!-- sidebar 1 content -->
+		&lt;/div&gt;
+
+		&lt;div class="holy-grail-sidebar-2 hg-sidebar"&gt;
+			&lt;!-- sidebar 2 content -->
+		&lt;/div&gt;
+
+	&lt;/div&gt;
+
+	&lt;footer&gt;
+		&lt;!-- footer content -->
+	&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+					
+					<p>I used explicit classes to make my code easier to read, I suggest you to do so, for you and your team, or for your new you in 6 months!</p>
+
+					<h3>CSS</h3>
+
+					<p>To be clear: today, your website has to be responsive. That's why the CSS code I'll propose you is <em>mobile first responsive</em>.</p>
+
+<pre class="code"><code class="css">/**
+ * Make body at least 100% height
+ * You can also use a combination
+ * of height: 100% in &lt;html&gt; and
+ * min-height: 100% in &lt;body&gt;.
+ */
+.holy-grail {
+	min-height: 100vh;
+}
+
+/**
+ * Let's do a column distribution
+ * (mobile first)
+ * flex value is 1 1 auto to make
+ * body skrinkable and extensible
+ */
+.holy-grail,
+.holy-grail-body {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+}
+
+/**
+ * Content body item is made
+ * extensible too.
+ */
+.holy-grail-content {
+	flex: 1 1 auto;
+}
+
+/**
+ * Put the first sidebar before content.
+ * If you need sidebar to be before content
+ * only in big screen put those 3 next lines
+ * in @media block.
+ */
+.holy-grail-sidebar-1 {
+	order: -1;
+}
+
+/**
+ * Let's introduce bigger screen
+ */
+
+@media (min-width: 768px) {
+	/**
+	 * Body items are now side by side
+	 */
+	.holy-grail-body {
+		flex-direction: row;
+	}
+
+	/**
+	 * Sidebars have a basic 260 width
+	 * and are not really flexible anymore
+	 */
+	.hg-sidebar {
+		flex: 0 0 260px;
+	}
+}</code></pre>
+
+					<p>I hope these comments will help you understand this very short code. You see now how Holy Grail Layout is at your fingertips.</p>
+
+					<p>You may now improve this kick-start CSS code introducing more precise break points you need in order to build <strong>your</strong> perfect website.</p>
+
+				</div><!-- .container -->

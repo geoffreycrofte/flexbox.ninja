@@ -1,0 +1,128 @@
+					
+				<div class="container">
+					<p>This is awesome! A logo to the left, a navigation to the right.<br>
+					It's not a big deal, but this tip could save your time during a lot of projects.</p>
+
+					<h2>Defining our needs</h2>
+					<p>I think there are two ways to handle this kind of situation, but only CSS will change the game. My list of needs:</p>
+
+					<ul>
+						<li>A logo to the left, a navigation to the right,</li>
+						<li>Logo and navigation have to be vertically centered,</li>
+						<li>Horizontal alignement have to be shared between logo and nav</li>
+						<li>When screen width becomes not enough for both in the same row, logo and nav have to be in two different centered-content lines.</li>
+						<li>(Optional) When both are in the same line logo is stuck to the very left, nav to the very right</li>
+					</ul>
+
+					<p>I put this last item as optionnal, because… it depends on the project you are doing, but the need can happens.</p>
+					
+					<h2>Let's code this</h2>
+
+					<h3>Our HTML basics</h3>
+
+<pre class="code"><code class="html">&lt;header class="main-header"&gt;
+	&lt;div class="container"&gt;
+		&lt;h1 class="mh-logo"&gt;
+			&lt;img src="http://flexbox.ninja/assets/images/logo.svg" width="170" height="95" alt="Flexbox.ninja"&gt;
+		&lt;/h1&gt;
+		&lt;nav class="main-nav"&gt;
+			&lt;ul class="main-nav-list"&gt;
+				&lt;li&gt;
+					&lt;a href="#"&gt;Home&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#"&gt;About us&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#"&gt;Our clients&lt;/a&gt;
+				&lt;/li&gt;
+				&lt;li&gt;
+					&lt;a href="#"&gt;Contact&lt;/a&gt;
+				&lt;/li&gt;
+			&lt;/ul&gt;
+		&lt;/nav&gt;
+	&lt;/div&gt;
+&lt;/header&gt;</code></pre>
+				
+					<p>I use a lot of classes so you can easily chose your own markup.
+					<br>In this case, the <code>.container</code> element is here to limit header content width in big screens.</p>
+
+					<h3>CSS to flex the things</h3>
+
+					<p>It's time to define the main rules that make this magic appears. Feel free to see the complete demo file to grab some other tips.</p>
+
+<pre class="code"><code class="css">/**
+ * Images a now responsive
+ */
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/**
+ * Limit the container in
+ * width for big screens
+ */
+.container {
+	width: 960px;
+	max-width: 100%;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+/**
+ * By using display: flex
+ * Logo and nav are in 2 cols
+ * align-items make them
+ * vertically centered
+ * justify-content distribute
+ * horizontal spaces around
+ * and flex-wrap break the
+ * things in two lines in
+ * small screens
+ */
+.main-header .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+/**
+ * The followings are to
+ * make things more
+ * clean and airy
+ * and contents centered
+ */
+.main-nav ul {
+	margin: 1em 0 .5em;
+	text-align: center;
+}
+.main-nav li {
+	display: inline;
+}
+.main-nav a {
+	display: inline-block;
+	padding: .5em 1.5em;
+}</code></pre>
+
+				<p>Magic part is at <code>.main-header .container</code> selector with all the flex-things. With that, we don't have the last (optionnal) point of our list.</p>
+
+				<p>I propose to you an alternative by pointing only the differences in this following CSS code:</p>
+
+<pre class="code"><code class="css">/**
+ * Space-around become
+ * Space-between to
+ * distribute space
+ * between the flex-items
+ */
+@media (min-width: 960px) {
+	.main-header .container {
+		justify-content: space-between;
+	}
+}</code></pre>
+
+					<p>Here, the breakpoint is defined by the maximum width of my <code>.container</code>. I think it's an at-least value, but feel free to adjust it according to your project.</p>
+
+				</div><!-- .container -->
+				
