@@ -1,6 +1,8 @@
 Flexbox.ninja
 ===================================
 
+![Flexbox.ninja Screenshot](https://user-images.githubusercontent.com/452767/51499076-26e9cf80-1dc9-11e9-82c4-e323508b55d4.jpg)
+
 [Flexbox.ninja](https://flexbox.ninja) is a website made and hosted by [Geoffrey Crofte](https://geoffrey.crofte.fr/en/) to help you better understand CSS Flexbox Layout Module.
 
 ## How to contribute
