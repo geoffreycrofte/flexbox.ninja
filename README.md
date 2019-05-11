@@ -21,7 +21,6 @@ Drop your name and your URL on your demo, I'll arrange the footer for you, becau
 
 Some ideas are already on my to-do list. Among those:
 
-* Align Buttons with Icons _DOING_
 * Vertical-Align Content
 * Flexible Sidebar
 * Stepper Input
