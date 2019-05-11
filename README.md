@@ -21,7 +21,7 @@ Drop your name and your URL on your demo, I'll arrange the footer for you, becau
 
 Some ideas are already on my to-do list. Among those:
 
-* Align Icons
+* Align Buttons with Icons _DOING_
 * Vertical-Align Content
 * Flexible Sidebar
 * Stepper Input
@@ -34,4 +34,5 @@ If you've got any idea or need, [contact me on Twitter](https://twitter.com/geof
 
 ## Website Next Steps
 
-The next step for the website is to become a [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications) so you can use this resource online and offline from your smartphone and compatible devices.
+The Website is a [PWA](https://en.wikipedia.org/wiki/Progressive_web_applications). This step is finally done.
+The next step will be better handling the cache for offline usage. You can already visit the demos when you ar offline, if you visited those been online.
