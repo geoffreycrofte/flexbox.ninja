@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Aligned buttons with icons solved by flexbox - Flexbox.ninja</title>
+
+		<meta name="viewport" content="initial-scale=1.0; width=device-width">
+
+		<style type="text/css">
+			@font-face {
+				font-family: 'brands';
+				src: url('fonts/brands.eot?q0fbw0');
+				src: url('fonts/brands.eot?q0fbw0#iefix') format('embedded-opentype'),
+					 url('fonts/brands.ttf?q0fbw0') format('truetype'),
+					 url('fonts/brands.woff?q0fbw0') format('woff'),
+					 url('fonts/brands.svg?q0fbw0#brands') format('svg');
+				font-weight: normal;
+				font-style: normal;
+			}
+
+			[class^="icon-"], [class*=" icon-"] {
+				font-family: 'brands' !important;
+				speak: none;
+				font-style: normal;
+				font-weight: normal;
+				font-variant: normal;
+				text-transform: none;
+				line-height: 1;
+
+				/* Better Font Rendering =========== */
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			.icon-instagram:before {
+				content: "\e900";
+			}
+			.icon-weibo:before {
+				content: "\e901";
+			}
+			.icon-facebook:before {
+				content: "\e902";
+			}
+			.icon-linkedin:before {
+				content: "\e903";
+			}
+			.icon-twitter:before {
+				content: "\e904";
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+			::-moz-selection {
+				background: #F34A4E;
+				color: #FFF;
+			}
+			::selection {
+				background: #F34A4E;
+				color: #FFF;
+			}
+			html, body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				font-family: sans-serif;
+				font-size: 1em;
+				line-height: 1.5;
+				color: #F34A4E;
+				background: #F8F8F8;
+			}
+			
+			.sr-only {
+				clip: rect(1px, 1px, 1px, 1px);
+				position: absolute;
+				height: 1px;
+				width: 1px;
+				overflow: hidden;
+			}
+
+			body {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.buttons-container {
+				display: flex;
+				flex-basis: 75%;
+				justify-content: center;
+				align-items: center;
+				max-width: 100%;
+				width: 720px;
+				margin: 0 auto;
+				transition: width .475s;
+			}
+
+			.size-medium .buttons-container {
+				width: 480px;
+			}
+
+			.size-small .buttons-container {
+				width: 320px;
+			}
+
+			.center {
+				margin-top: 4em;
+				text-align: center;
+			}
+			.center a {
+				display: inline-block;
+				text-decoration: none;
+				text-transform: uppercase;
+				font-weight: bold;
+				letter-spacing: 0.1em;
+				color: #F34A4E;
+				border-bottom: 1px solid #F34A4E;
+				transition: all .275s;
+			}
+			.center a:hover,
+			.center a:focus {
+				opacity: 0.8;
+				padding-bottom: 2px;
+				border-bottom-color: rgba(243, 74, 95, .5);
+			}
+
+			.simul {
+				text-align: center;
+			}
+
+			.simul button {
+				padding: 8px 16px;
+				border: 2px solid #555;
+				font-weight: bold;
+				color: #555;
+				border-radius: 40px;
+				background: none;
+				cursor: pointer;
+				transition: all .275s;
+			}
+
+			.simul button:focus,
+			.simul button:hover {
+				background: #ddd;
+			}
+
+			/**
+			 * Let's dive into the buttons styles
+			 */
+			.social-buttons,
+			.social-buttons li {
+				display: flex;
+				padding: 0;
+				margin: 0;
+			}
+
+			.social-buttons {
+				width: 100%;
+				list-style: none;
+				flex-wrap: wrap;
+			}
+
+			.social-buttons li {
+				flex-basis: 25%;
+				flex-shrink: 0;
+				flex-grow: 1;
+				transition: margin .475s;
+			}
+
+			.social-buttons a {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				padding: .5em 1em;
+				font-weight: 500;
+				text-decoration: none;
+				color: #FFF;
+			}
+
+			.social-buttons i {
+				margin-right: .5em;
+			}
+
+			.social-buttons [href*="twitter.com"] {
+				background: #1da1f2;
+			}
+
+			.social-buttons [href*="facebook.com"] {
+				background: #3b5998;
+			}
+
+			.social-buttons [href*="instagram.com"] {
+				background: #c13584;
+			}
+
+			.social-buttons [href*="weibo.com"] {
+				background: #e6162d;
+			}
+
+			.social-buttons [href*="linkedin.com"] {
+				background: #0077b5;
+			}
+
+			/* Variant with margins */
+			.with-margins .social-buttons li {
+				margin: 2px;
+			}
+
+			.with-big-margins .social-buttons li {
+				margin: 8px;
+			}
+		</style>
+
+	</head>	
+	<body>
+		<h1 class="sr-only">Aligned buttons with icons solved by flexbox</h1>
+		
+		<div class="buttons-container">
+			<ul class="social-buttons">
+				<li>
+					<a href="https://twitter.com/intent/tweet?source=webclient&amp;original_referer=http://flexbox.ninja/&amp;text=Flexbox%20Use%20Cases%20to%20better%20understand%20Flexbox%20Layout%20by%20examples&amp;url=http://flexbox.ninja/&amp;via=geoffreycrofte">
+						<i class="icon-twitter" role="presentation"></i>
+						Twitter
+					</a>
+				</li>
+				<li>
+					<a href="https://www.facebook.com/sharer/sharer.php?u=https://flexbox.ninja/">
+						<i class="icon-facebook" role="presentation"></i>
+						Facebook
+					</a>
+				</li>
+				<li>
+					<a href="https://instagram.com">
+						<i class="icon-instagram" role="presentation"></i>
+						Instagram
+					</a>
+				</li>
+				<li>
+					<a href="http://service.weibo.com/share/share.php?title=Flexbox%20Use%20Cases%20to%20better%20understand%20Flexbox%20Layout%20by%20examples&amp;url=https://flexbox.ninja/">
+						<i class="icon-weibo" role="presentation"></i>
+						Weibo
+					</a>
+				</li>
+				<li>
+					<a href="https://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;trk=FlexboxNinja&amp;title=Flexbox%20Use%20Cases%20to%20better%20understand%20Flexbox%20Layout%20by%20examples&amp;url=https://flexbox.nina/">
+						<i class="icon-linkedin" role="presentation"></i>
+						Linkedin
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="simul">
+			<button type="button" class="toggle-size">Toggle Size</button>
+			<button type="button" class="toggle-margin">Toggle Margin</button>
+		</div>
+		
+		<footer>
+			<p class="center"><a href="https://flexbox.ninja/demos/buttons-with-icons/">Back to the article</a></p>
+		</footer>
+
+		<script>
+			(function(){
+				const tglBtn = document.querySelector('.toggle-size'),
+					  tglMar = document.querySelector('.toggle-margin'),
+					  body   = document.querySelector('body');
+
+				tglBtn.addEventListener('click', function(){
+
+					if ( body.classList.contains('size-medium') ) {
+						body.classList.remove('size-medium');
+						body.classList.add('size-small');
+					} else if ( body.classList.contains('size-small') ) {
+						body.classList.remove('size-small');
+					} else {
+						body.classList.add('size-medium');
+					}
+				});
+
+				tglMar.addEventListener('click', function(){
+					if ( body.classList.contains('with-margins') ) {
+						body.classList.remove('with-margins');
+						body.classList.add('with-big-margins');
+					} else if ( body.classList.contains('with-big-margins') ) {
+						body.classList.remove('with-big-margins');
+					} else {
+						body.classList.add('with-margins');
+					}
+				});
+			})();
+		</script>
+	</body>
+</html>

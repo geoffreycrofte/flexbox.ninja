@@ -23,6 +23,14 @@
 			"dl" : true,
 			"direct" : true,
 			"dateCreated" : "16 september 2016"
+		},
+		"buttons-with-icons" : {
+			"title"	: "Buttons with Icons",
+			"desc"	: "Align Buttons handling overflow by wrapping the content and including aligned icon and text. Flexbox can do it for you!",
+			"color" : "alt",
+			"dl" : true,
+			"direct" : true,
+			"dateCreated" : "11 may 2019"
 		}
 	}
 }

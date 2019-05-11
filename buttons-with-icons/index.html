@@ -1,0 +1,149 @@
+					
+				<div class="container">
+					<p>The most common case for this kind of pattern is when you need to build buttons for social network sharing.</p>
+
+					<h2>Defining our needs</h2>
+					<p>As usual, I like to define some goals so that the CSS solution does make sense to you. What I need is:</p>
+
+					<ul>
+						<li>Vertical aligned buttons</li>
+						<li>Buttons with vertical aligned icon and text</li>
+						<li>If I don't have enough space, the overflowing buttons go to a new line.</li>
+						<li>Buttons cover the entire space available by distributing the available space.</li>
+						<li>Keep the HTML code as simple and accessible as possible, as usual :p</li>
+					</ul>
+
+					<p>The last part is optional.</p>
+					
+					<h2>Let's code this</h2>
+
+					<h3>Our HTML basics</h3>
+
+<pre class="code"><code class="html">&lt;ul class="social-buttons"&gt;
+	&lt;li&gt;
+		&lt;a href="https://twitter.com/"&gt;
+			&lt;i class="icon-twitter" role="presentation"&gt;&lt;/i&gt;
+			Twitter
+		&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href="https://www.facebook.com/"&gt;
+			&lt;i class="icon-facebook" role="presentation"&gt;&lt;/i&gt;
+			Facebook
+		&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href="https://instagram.com"&gt;
+			&lt;i class="icon-instagram" role="presentation"&gt;&lt;/i&gt;
+			Instagram
+		&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href="http://weibo.com/"&gt;
+			&lt;i class="icon-weibo" role="presentation"&gt;&lt;/i&gt;
+			Weibo
+		&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href="https://www.linkedin.com/"&gt;
+			&lt;i class="icon-linkedin" role="presentation"&gt;&lt;/i&gt;
+			Linkedin
+		&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+				
+					<p>I used <code>role="presentation"</code> to avoid assistive technology reading the decorative icon. Read more about that thanks to the excellent article by Scott O'Hara "<a href="https://www.scottohara.me/blog/2018/05/05/hidden-vs-none.html">Know your ARIA: 'hidden' VS 'none'</a>".</p>
+
+					<h3>CSS to flex the things</h3>
+
+					<p>Ok now we are using Flexbox to make the magic happen.</p>
+
+<pre class="code"><code class="css">/**
+ * The container and the item are both
+ * into flex layout. To align items
+ * to each other.
+ */
+.social-buttons,
+.social-buttons li {
+	display: flex;
+	padding: 0;
+	margin: 0;
+}
+
+/**
+ * Force to occupy the space available
+ * and allow item being on several lines
+ */
+.social-buttons {
+	width: 100%;
+	list-style: none;
+	flex-wrap: wrap;
+}
+
+/**
+ * Items tend to occupy 25% of
+ * the available width but are
+ * allow to grow.
+ */
+.social-buttons li {
+	flex-basis: 25%;
+	flex-shrink: 0;
+	flex-grow: 1;
+}
+
+/**
+ * The anchor is also in Flex
+ * to align icon and text and
+ * center their content.
+ */
+.social-buttons a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: .5em 1em;
+	font-weight: 500;
+	text-decoration: none;
+	color: #FFF;
+}
+
+/**
+ * Some decorations for the 
+ * next lines.
+ */
+.social-buttons i {
+	margin-right: .5em;
+}
+
+.social-buttons [href*="twitter.com"] {
+	background: #1da1f2;
+}
+
+.social-buttons [href*="facebook.com"] {
+	background: #3b5998;
+}
+
+.social-buttons [href*="instagram.com"] {
+	background: #c13584;
+}
+
+.social-buttons [href*="weibo.com"] {
+	background: #e6162d;
+}
+
+.social-buttons [href*="linkedin.com"] {
+	background: #0077b5;
+}</code></pre>
+
+				<p>The magic parts are here the <code>wrap</code> option and the fact that <code>.social-buttons li</code> are allow to <code>grow</code> even if their width is set thanks to <code>flex-basis: 25%</code> which is not a strong constraint</p>
+
+				<p>Here is an alternative code with margin:</p>
+
+<pre class="code"><code class="css">.social-buttons li {
+	margin: 2px;
+}</code></pre>
+
+					<p>Have fun!</p>
+
+				</div><!-- .container -->
+				
