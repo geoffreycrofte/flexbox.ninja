@@ -27,7 +27,6 @@ Some ideas are already on my to-do list. Among those:
 * Card Group
 * Flexible Gallery (Masonry)
 * Grid Gallery
-* Pricing Table
 
 If you've got any idea or need, [contact me on Twitter](https://twitter.com/geoffreycrofte).
 

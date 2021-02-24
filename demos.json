@@ -31,6 +31,14 @@
 			"dl" : true,
 			"direct" : true,
 			"dateCreated" : "11 may 2019"
+		},
+		"pricing-table" : {
+			"title"	: "Pricing Table",
+			"desc"	: "Several Prices for a product with different features for each offer, with one specific offer put in highlight. Easy!",
+			"color" : "",
+			"dl" : true,
+			"direct" : true,
+			"dateCreated" : "24 february 2021"
 		}
 	}
 }

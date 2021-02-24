@@ -1,0 +1,195 @@
+					
+				<div class="container">
+					<p>Pricing Table is all over the internet with a lot of different patterns. I tried to cover the archetype of this kind of component here.</p>
+
+					<h2>Defining our Pricing Table needs</h2>
+					<p>As usual, I'll define some goals so that the CSS solution does make sense to you. What I need for this pricing table is:</p>
+
+					<ul>
+						<li><a href="https://flexbox.ninja/demos/same-height-columns/">Same Column Height</a> already seen in Flexbox.ninja</li>
+						<li>All call to action at the same level</li>
+						<li>One highlighted columns</li>
+						<li>Flexible amount of items</li>
+						<li>Keep the HTML code as simple and accessible as possible, as usual 😘</li>
+					</ul>
+					
+					<h2>Let's code our Pricing Table</h2>
+
+					<h3>Our HTML basics</h3>
+
+					<p>
+						Here is my piece of HTML. Just add any item you want <code>PT-Item</code> and the class <code>.is-highlighted</code> to the item you want to highlight.
+					</p>
+
+<pre class="code"><code class="html">&lt;section class="Pricing-Table"&gt;
+	&lt;article class="PT-Item"&gt;
+		&lt;header class="PT-Heading"&gt;
+			&lt;h2 class="PT-Title"&gt;Free&lt;/h2&gt;
+			&lt;p class="PT-Subtitle"&gt;Forever, promise.&lt;/p&gt;
+		&lt;/header&gt;
+
+		&lt;ul class="PT-Features"&gt;
+			&lt;li class="PT-Feature"&gt;Unlimited Items&lt;/li&gt;
+			&lt;li class="PT-Feature"&gt;2 Team Members&lt;/li&gt;
+			&lt;li class="PT-Feature"&gt;3 Projects&lt;/li&gt;
+			&lt;li class="PT-Feature"&gt;Cloud Storage (2Gb)&lt;/li&gt;
+		&lt;/ul&gt;
+
+		&lt;div class="PT-Footer"&gt;
+			&lt;p class="PT-Price"&gt;
+				&lt;small&gt;$&lt;/small&gt;
+				&lt;span class="PT-nb"&gt;0&lt;/span&gt;
+				&lt;small&gt;/month&lt;/small&gt;
+			&lt;/p&gt;
+			&lt;p class="PT-Trial"&gt;14-day money back guarantee&lt;/p&gt;
+			&lt;p class="PT-CTA"&gt;
+				&lt;a href="#" class="button"&gt;Buy this one&lt;/a&gt;
+			&lt;/p&gt;
+		&lt;/div&gt;
+	&lt;/article&gt;
+	
+	&lt;!-- ... repeat --&gt;
+
+&lt;/section&gt;</code></pre>
+				
+					<p>I used a <code>ul</code> element for the list of features, because it's a list so it makes sense using semantic HTML. Same for the rest of the HTML element choices here 😊</p>
+
+					<p>You can totally use <a href="https://www.creativejuiz.fr/blog/veille-technologique/html5-microdata-quelques-exemples" hreflang="fr">Microdata (FR)</a> in this case to improve the code of your pricings.</p>
+
+					<h3>CSS to flex the Pricing Table</h3>
+
+					<p>Ok now what I need is to have a two dimension flex context. The first one is for making the items next to each other and stretch by default. The second is to put the content of each item in a column direction to put the footer at the very bottom of an offer.</p>
+
+<pre class="code"><code class="css">/**
+ * The container is in a Flex layout
+ * with a gap of 24px
+ */
+.Pricing-Table {
+	--gap: 24px;
+	--nb-items: 3;
+	/* I used CSS Variables here to 
+	 * facilitate the calculation
+	 * of width suggestion later.
+	 */
+
+	display: flex;
+	justify-content: center;
+	/* Make it wrap in case we have too many items */
+	flex-wrap: wrap;
+	gap: var(--gap);
+
+	/* Just design purpose */
+	width: 1040px;
+	max-width: 100%;
+	padding: 32px;
+}
+
+/**
+ * Below a bit of magic to count
+ * the number of items.
+ * I stopped over 5 on purpose.
+ */
+.PT-Item:nth-last-child(4):first-child, 
+.PT-Item:nth-last-child(4):first-child ~ .PT-Item {
+	--nb-items: 4;
+}
+
+.PT-Item:nth-last-child(5):first-child, 
+.PT-Item:nth-last-child(5):first-child ~ .PT-Item {
+	--nb-items: 5;
+}
+
+/**
+ * Flex direction column to put our
+ * footer at the very bottom.
+ */
+.PT-Item {
+   /* Preparing for themed item */
+	--primary: #F34A4E;
+
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	/* Be careful with max-content value */
+	min-width: max-content;
+	background: white;
+	border-radius: 24px;
+	overflow: hidden;
+	/**
+	 * The calc here is a way to keep thing out
+	 * of the wrapping behavior for a while.
+	 * Above 5 items it stops and go back
+	 * to --nb-items = 3
+	 */
+	flex-basis: calc( calc(100% - (var(--gap) * var(--nb-items)) )/var(--nb-items) );
+}
+
+.PT-Item.is-highlighted {
+	/* Preparing for highlighted item */
+	--primary: #1FA19C;
+	transform: scale(1.05);
+}
+
+/**
+ * Most of the rest is for
+ * decorative purpose.
+ */
+
+.PT-Item > * {
+	padding: 24px;
+}
+
+.PT-Item p,
+.PT-Item ul,
+.PT-Item h2 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.PT-Heading {
+	text-align: center;
+	color: white;
+	background: var(--primary);
+}
+
+.PT-Feature {
+	font-size: .875em;
+	padding: 8px 0;
+	list-style: none;
+}
+
+.PT-Feature + .PT-Feature {
+	border-top: 1px solid #eee;
+}
+
+.PT-Footer {
+	padding-top: 0;
+	margin-top: auto;
+	text-align: center;
+}
+
+.PT-Price {
+	font-size: 2.5rem;
+	color: var(--primary);
+}
+
+.PT-Price small {
+	margin: 0 -.25em;
+	font-size: 1rem;
+	color: #777;
+}
+
+.PT-Trial {
+	font-size: .75em;
+	color: #777;
+}</code></pre>
+
+				<p>The magic parts here are the <code>wrap</code> option and the fact that <code>.PT-Item</code> width is determined by the <code>flex-basis</code> calculation. Above 5 items I stopped counting on purpose, but feel free to adjust this code for your needs.</p>
+
+				<p>There is no need for responsive complement here since the entire component is wrapping naturally.</p>
+
+
+				<p>Have fun!</p>
+
+			</div><!-- .container -->
+				

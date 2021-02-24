@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Pricing Tables with feature list solved by flexbox - Flexbox.ninja</title>
+
+		<meta name="viewport" content="initial-scale=1.0; width=device-width">
+
+		<style type="text/css">
+			* {
+				box-sizing: border-box;
+			}
+			::-moz-selection {
+				background: #F34A4E;
+				color: #FFF;
+			}
+			::selection {
+				background: #F34A4E;
+				color: #FFF;
+			}
+			html, body {
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				font-family: sans-serif;
+				font-size: 1em;
+				line-height: 1.5;
+				color: #434446;
+				background: #F8F8F8;
+			}
+
+			a {
+				color: #F34A4E;
+			}
+			
+			.sr-only {
+				clip: rect(1px, 1px, 1px, 1px);
+				position: absolute;
+				height: 1px;
+				width: 1px;
+				overflow: hidden;
+			}
+
+			body {
+				display: flex;
+				flex-direction: column;
+				justify-content: safe center;
+				align-items: safe center;
+			}
+
+			.simul {
+				margin-top: 60px;
+			}
+
+			.simul button {
+				padding: 8px 16px;
+				background: #fed0d1;
+				color: #F34A4E;
+				border: 0;
+				font-size: 1em;
+				font-weight: bold;
+				border-radius: 4px;
+			}
+
+			.simul + footer {
+				padding-bottom: 60px;
+			}
+
+			/* OUR FLEX KICKING CODE */
+			.Pricing-Table {
+				--gap: 24px;
+				--nb-items: 3;
+
+				display: flex;
+				width: 1040px;
+				max-width: 100%;
+				padding: 32px;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: var(--gap);
+			}
+
+			.PT-Item:nth-last-child(4):first-child, 
+			.PT-Item:nth-last-child(4):first-child ~ .PT-Item {
+				--nb-items: 4;
+			}
+
+			.PT-Item:nth-last-child(5):first-child, 
+			.PT-Item:nth-last-child(5):first-child ~ .PT-Item {
+				--nb-items: 5;
+			}
+
+			.PT-Item {
+				--primary: #F34A4E;
+
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+				min-width: max-content;
+				background: white;
+				border-radius: 24px;
+				overflow: hidden;
+				flex-basis: calc( calc(100% - (var(--gap) * var(--nb-items)) )/var(--nb-items) );
+				box-shadow: 0 18px 58px rgba(66, 11, 89, 0.07),
+							0 6.5703px 21.171px rgba(66, 11, 89, 0.0482987),
+							0 3.18976px 10.2781px rgba(66, 11, 89, 0.0389404),
+							0 1.56368px 5.03852px rgba(66, 11, 89, 0.0310596),
+							0 0.618281px 1.99224px rgba(66, 11, 89, 0.0217013);
+			}
+
+			.PT-Item.is-highlighted {
+				--primary: #1FA19C;
+				transform: scale(1.05);
+			}
+
+			.PT-Item > * {
+				padding: 24px;
+			}
+
+			.PT-Item p,
+			.PT-Item ul,
+			.PT-Item h2 {
+				margin-top: 0;
+				margin-bottom: 0;
+			}
+
+			.PT-Heading {
+				text-align: center;
+				color: white;
+				background: var(--primary);
+			}
+
+			.PT-Feature {
+				font-size: .875em;
+				padding: 8px 0;
+				list-style: none;
+			}
+
+			.PT-Feature + .PT-Feature {
+				border-top: 1px solid #eee;
+			}
+
+			.PT-Footer {
+				padding-top: 0;
+				margin-top: auto;
+				text-align: center;
+			}
+
+			.PT-Price {
+				font-size: 2.5rem;
+				color: var(--primary);
+			}
+
+			.PT-Price small {
+				margin: 0 -.25em;
+				font-size: 1rem;
+				color: #777;
+			}
+
+			.PT-Trial {
+				font-size: .75em;
+				color: #777;
+			}
+
+			.button {
+				display: block;
+				text-align: center;
+				margin-top: 16px;
+				padding: 8px 16px;
+				font-weight: bold;
+				text-decoration: none;
+				color: var(--primary);
+				border: 2px solid var(--primary);
+				border-radius: 8px;
+			}
+
+			.is-highlighted .button {
+				background: var(--primary);
+				color: white;
+			}
+		</style>
+
+	</head>	
+	<body>
+		<h1 class="sr-only">Pricing Tables with feature list solved by flexbox</h1>
+		
+		<section class="Pricing-Table">
+			<article class="PT-Item">
+				<header class="PT-Heading">
+					<h2 class="PT-Title">Free</h2>
+					<p class="PT-Subtitle">Forever, promise.</p>
+				</header>
+
+				<ul class="PT-Features">
+					<li class="PT-Feature">Unlimited Items</li>
+					<li class="PT-Feature">2 Team Members</li>
+					<li class="PT-Feature">3 Projects</li>
+					<li class="PT-Feature">Cloud Storage (2Gb)</li>
+				</ul>
+
+				<div class="PT-Footer">
+					<p class="PT-Price">
+						<small>$</small>
+						<span class="PT-nb">0</span>
+						<small>/month</small>
+					</p>
+					<p class="PT-Trial">14-day money back guarantee</p>
+					<p class="PT-CTA">
+						<a href="#" class="button">Buy this one</a>
+					</p>
+				</div>
+			</article>
+
+			<article class="PT-Item is-highlighted">
+				<header class="PT-Heading">
+					<h2 class="PT-Title">Lite Pro</h2>
+					<p class="PT-Subtitle">For small teams.</p>
+				</header>
+
+				<ul class="PT-Features">
+					<li class="PT-Feature">Unlimited Items</li>
+					<li class="PT-Feature">10 Team Members</li>
+					<li class="PT-Feature">Unlimited Projects</li>
+					<li class="PT-Feature">Cloud Storage (1Tb)</li>
+					<li class="PT-Feature">Offline version</li>
+					<li class="PT-Feature">Share to non-sign up</li>
+					<li class="PT-Feature">White label version</li>
+				</ul>
+
+				<div class="PT-Footer">
+					<p class="PT-Price">
+						<small>$</small>
+						<span class="PT-nb">10</span>
+						<small>/month</small>
+					</p>
+					<p class="PT-Trial">14-day money back guarantee</p>
+					<p class="PT-CTA">
+						<a href="#" class="button">Buy this one</a>
+					</p>
+				</div>
+			</article>
+
+			<article class="PT-Item">
+				<header class="PT-Heading">
+					<h2 class="PT-Title">Enterprise</h2>
+					<p class="PT-Subtitle">For big companies.</p>
+				</header>
+
+				<ul class="PT-Features">
+					<li class="PT-Feature">Unlimited Items</li>
+					<li class="PT-Feature">Unlimited Team Members</li>
+					<li class="PT-Feature">Unlimited Projects</li>
+					<li class="PT-Feature">Unlimited Cloud Storage</li>
+					<li class="PT-Feature">Offline version</li>
+					<li class="PT-Feature">Share to non-sign up</li>
+					<li class="PT-Feature">Your brand on the UI</li>
+					<li class="PT-Feature">A Lion Dance 1 time a year</li>
+				</ul>
+
+				<div class="PT-Footer">
+					<p class="PT-Price">
+						<small>$</small>
+						<span class="PT-nb">40</span>
+						<small>/month</small>
+					</p>
+					<p class="PT-Trial">14-day money back guarantee</p>
+					<p class="PT-CTA">
+						<a href="#" class="button">Buy this one</a>
+					</p>
+				</div>
+			</article>
+
+		</section>
+
+		<div class="simul">
+			<button type="button" class="add">Add an offer</button>
+			<button type="button" class="remove">Remove an offer</button>
+		</div>
+		
+		<footer>
+			<p class="center">
+				<a href="https://flexbox.ninja/demos/pricing-table/">Back to the article</a>
+			</p>
+		</footer>
+
+		<script>
+			(function(){
+				const addbtn = document.querySelector('.add'),
+					  removebtn = document.querySelector('.remove');
+
+				addbtn.addEventListener('click', function(){
+					let last = document.querySelector('.PT-Item:last-child'),
+						all = document.querySelectorAll('.PT-Item');
+
+					if ( last.getAttribute('style') ) {
+						last.removeAttribute('style');
+					} else  {
+						let clone = last.cloneNode(true);
+
+						clone.querySelector('.PT-Title').innerHTML = clone.querySelector('.PT-Title').innerHTML + "+";
+						clone.querySelector('.PT-nb').innerHTML = parseInt( clone.querySelector('.PT-nb').innerHTML ) * 2;
+						last.after(clone);
+					}
+				});
+
+				removebtn.addEventListener('click', function(){
+					let last = document.querySelector('.PT-Item:last-child'),
+						all = document.querySelectorAll('.PT-Item');
+
+					if ( all.length > 3 ) {
+						last.remove();
+					} else if ( all.length === 3 ) {
+						last.style.display = 'none';
+					}
+				});
+			})();
+		</script>
+	</body>
+</html>
